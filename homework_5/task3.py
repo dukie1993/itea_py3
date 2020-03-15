@@ -22,4 +22,4 @@ def div_max_numbers(a, b):
             continue
     print(max_num)
 
-div_max_numbers(10, 20)
+div_max_numbers(10, 11)

@@ -18,8 +18,6 @@ def div_max_numbers(a, b):
     for i, j in result_num:
         if i > max_num[0] and j > max_num[1]:
             max_num = [i, j]
-        if max_num[0] != b:
-            continue
     print(max_num)
 
 div_max_numbers(10, 11)

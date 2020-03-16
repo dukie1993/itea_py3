@@ -6,16 +6,31 @@
 '''
 
 import string
+from time import sleep
 from random import *
-def password_generator(a, b):
+def password_generator(a=8):
     try:
         a = int(a)
-        b = int(b)
+        while a > 0:
+            try:
+                a = int(a)
+            except ValueError:
+                print("Невірне значення. Очікується цифра.")
+                password_generator(input("Введіть бажану кількість символів: "))
+            characters = string.ascii_letters + string.punctuation  + string.digits
+            password =  "".join(choice(characters) for x in range(a))
+            print("Ваший пароль:", password)
+            repeat = input("Бажаєте повторити генерацію? - Y/N: ")
+            if repeat == "Y":
+                print("Повторна генерація...")
+                sleep(1)
+                password_generator(input("Введіть бажану кількість символів: "))
+            elif repeat == "N":
+                print("Завершення програми.")
+                exit()
+            break
     except ValueError:
-        print("Incorrect input.")
-        exit()
-    characters = string.ascii_letters + string.punctuation  + string.digits
-    password =  "".join(choice(characters) for x in range(a, b))
-    print("Your password is:", password)
+        print("Повторіть введення, очікується цифра.")
+        password_generator(input("Введіть бажану кількість символів: "))
 
-password_generator(8, 16)
+password_generator(input("Введіть бажану кількість символів: "))

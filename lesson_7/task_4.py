@@ -4,10 +4,7 @@
 Регістр не враховувати
 '''
 
-string_1 = input("Строка: ").lower()
-string_search = input("Пошукове слово: ").lower()
-string_count = 0
-while string_count >= len(string_1):
-    if string_search in string_1:
-        string_count += 1
-        print(string_count)
+import re
+a = 'In a hole in the ground there lived a ground like at the 5-th stars ground'
+res = len(re.findall(r'\b{}\b'.format(input()), a))
+print(res)

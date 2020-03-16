@@ -11,6 +11,9 @@ from random import *
 def password_generator(a=8):
     try:
         a = int(a)
+        if a == 0:
+            print("Ви ввели 0, повторіть спробу.")
+            password_generator(input("Введіть бажану кількість символів: "))
         while a > 0:
             characters = string.ascii_letters + string.punctuation  + string.digits
             password =  "".join(choice(characters) for x in range(a))

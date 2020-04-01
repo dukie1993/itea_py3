@@ -45,16 +45,18 @@ search_data = input("Введіть пошуковий запит: ")
 while True:
     if user_choice == 1: # слово
         words_data_1 = data_1.split(" ")
+        print(words_data_1)
         words_data_2 = data_2.split(" ")
+        print(words_data_2)
         
         while True:
             if search_data in words_data_1 and words_data_2:
                 counter += 1
                 print(counter)
                 index_1 = words_data_1.index(search_data)
-                words_data_1 = words_data_1.pop(index_1)
+                words_data_1.pop(index_1)
                 index_2 = words_data_2.index(search_data)
-                words_data_2 = words_data_2.pop(index_2)
+                words_data_2.pop(index_2)
             else:
                 break
 

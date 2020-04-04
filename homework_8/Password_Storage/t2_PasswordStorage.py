@@ -20,7 +20,7 @@ Password storage.
 
 import string
 from time import sleep
-from random import *
+import random
 def password_generator(a=8):
     try:
         a = int(a)
@@ -29,7 +29,7 @@ def password_generator(a=8):
             password_generator(input("Введіть бажану кількість символів: "))
         while a > 0:
             characters = string.ascii_letters + string.punctuation  + string.digits
-            password =  "".join(choice(characters) for x in range(a))
+            password =  "".join(random.choice(characters) for x in range(a))
             print("Ваший пароль:", password)
             repeat = input("Бажаєте повторити генерацію? - Y/N: ").lower()
             if repeat == "y":

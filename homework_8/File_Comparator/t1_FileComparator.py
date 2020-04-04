@@ -4,6 +4,7 @@
 словосполучення. Вивести на екран кількість спільних елементів, які запросив 
 користувач.
 '''
+import re
 import colorama
 from time import sleep
 
@@ -39,9 +40,9 @@ if user_choice == 0:
     sleep(1.5)
     exit()
 
-counter = 0
 search_data = input("Введіть пошуковий запит: ")
 
+counter = 0
 if user_choice == 1: # пошук по слову
     words_data_1 = data_1.split(" ") # утворює список і ділить по пробілу слова
     # print(words_data_1)
@@ -60,39 +61,15 @@ if user_choice == 1: # пошук по слову
             break
 
 elif user_choice == 2: # словосполучення
-    words_data_1 = data_1.split(",")
-    # print(words_data_1)
-    words_data_2 = data_2.split(",")
-    # print(words_data_2)
-    
-    while True:
-        if search_data in words_data_1 and search_data in words_data_2:
-            counter += 1
-            # print(counter)
-            index_1 = words_data_1.index(search_data)
-            words_data_1.pop(index_1)
-            index_2 = words_data_2.index(search_data)
-            words_data_2.pop(index_2)
-        else:
-            break
-    
+    result_data_1 = len(re.findall(search_data, data_1))
+    result_data_2 = len(re.findall(search_data, data_2))
+    if result_data_1 == result_data_2:
+        counter = result_data_1
 elif user_choice == 3: # речення
-    words_data_1 = data_1.split(".\n")
-    print(words_data_1)
-    words_data_2 = data_2.split(".\n")
-    print(words_data_2)
-    
-    while True:
-        if search_data in words_data_1 and search_data in words_data_2:
-            counter += 1
-            # print(counter)
-            index_1 = words_data_1.index(search_data)
-            words_data_1.pop(index_1)
-            index_2 = words_data_2.index(search_data)
-            words_data_2.pop(index_2)
-        else:
-            break
-    
+    result_data_1 = len(re.findall(search_data, data_1))
+    result_data_2 = len(re.findall(search_data, data_2))
+    if result_data_1 == result_data_2:
+        counter = result_data_1
 else:
     print("Некоректне значення. Повторіть спробу.")
     exit()
